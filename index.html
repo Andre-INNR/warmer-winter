@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'><clipPath id='sc'><rect x='0' y='0' width='56' height='28'/></clipPath><circle cx='28' cy='28' r='24' fill='%23FF5A5F' clip-path='url(%23sc)'/><line x1='4' y1='28' x2='52' y2='28' stroke='%23E04E54' stroke-width='1.5' stroke-linecap='round'/><path d='M38 46 Q40 36 36 28' stroke='%23FFD9B8' stroke-width='2.2' stroke-linecap='round' fill='none'/><path d='M36 28 Q30 22 24 24' stroke='%23FFD9B8' stroke-width='1.8' stroke-linecap='round' fill='none'/><path d='M36 28 Q32 20 36 16' stroke='%23FFD9B8' stroke-width='1.8' stroke-linecap='round' fill='none'/><path d='M36 28 Q42 20 46 22' stroke='%23FFD9B8' stroke-width='1.8' stroke-linecap='round' fill='none'/><path d='M36 28 Q40 24 48 26' stroke='%23FFD9B8' stroke-width='1.8' stroke-linecap='round' fill='none'/></svg>">
-<title>Warmer Winter — v0.16.4</title>
+<title>Warmer Winter — v0.16.5</title>
 <!-- v0.14.0 Fix 9: Lora Serif — warm, bookish, harmoniert mit Korall-Palmen-Icon -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1498,7 +1498,7 @@
         <text x="58" y="34" dominant-baseline="middle" font-family="'Lora', Georgia, 'Times New Roman', serif" font-size="22" fill="#5A3E28"><tspan font-style="italic" font-weight="400" letter-spacing="0.015em">Warmer</tspan><tspan font-weight="400" letter-spacing="0.04em" dx="6">Winter</tspan></text>
       </svg>
     </button>
-    <div class="meta">Wohnungs-Suche fuer die warme Saison · v0.16.4-2026-05-15 · Stand 2026-05-15</div>
+    <div class="meta">Wohnungs-Suche fuer die warme Saison · v0.16.5-2026-05-15 · Stand 2026-05-15</div>
   </div>
   <div class="header-toggles">
     <div class="toggle" id="mode-toggle" role="tablist" aria-label="Ansichtsmodus">
@@ -1588,7 +1588,7 @@
 
 <!-- Footer -->
 <footer>
-  <span class="footer-info">18 Listings · pisos.com + fotocasa + habitaclia · Foto-Score (1-10) als Sterne · localStorage-State · v0.16.4-2026-05-15</span>
+  <span class="footer-info">18 Listings · pisos.com + fotocasa + habitaclia · Foto-Score (1-10) als Sterne · localStorage-State · v0.16.5-2026-05-15</span>
   <button class="footer-trash" id="footer-trash" onclick="openTrashFilter()" title="Geloeschte Listings" aria-label="Geloeschte Listings"><span id="footer-trash-icon" aria-hidden="true"></span> <span id="footer-trash-count">0</span></button>
 </footer>
 
@@ -2934,6 +2934,54 @@
       window.scrollTo(0, _savedOverviewScrollY);
     }
   });
+
+  // ------------------------------------------------------------------
+  // v0.16.5 — State-Repair: heilt stale localStorage aus alten App-Versionen
+  // MUSS vor dem ersten render laufen (listings + state + saveState sind hier verfügbar).
+  // ------------------------------------------------------------------
+  function repairState() {
+    let changed = false;
+    // swipeIdx
+    if (typeof state.swipeIdx !== 'number' || state.swipeIdx < 0 || state.swipeIdx >= listings.length) {
+      console.info('[v0.16.5] state.swipeIdx repaired:', state.swipeIdx, '→ 0 (listings:', listings.length, ')');
+      state.swipeIdx = 0; changed = true;
+    }
+    // filter
+    const validFilters = ['all','like','dislike','question','deleted'];
+    if (!validFilters.includes(state.filter)) {
+      console.info('[v0.16.5] state.filter repaired:', state.filter, '→ all');
+      state.filter = 'all'; changed = true;
+    }
+    // priceFilter
+    const defaultPf = { low: true, mid: false, high: false, xhigh: false };
+    if (!state.priceFilter || typeof state.priceFilter !== 'object' ||
+        Object.keys(defaultPf).some(k => typeof state.priceFilter[k] !== 'boolean')) {
+      console.info('[v0.16.5] state.priceFilter repaired:', state.priceFilter, '→', defaultPf);
+      state.priceFilter = { ...defaultPf }; changed = true;
+    }
+    // regionFilter
+    if (!['all','mainland','island'].includes(state.regionFilter)) {
+      console.info('[v0.16.5] state.regionFilter repaired:', state.regionFilter, '→ all');
+      state.regionFilter = 'all'; changed = true;
+    }
+    // view
+    if (!['overview','gallery','swipe'].includes(state.view)) {
+      console.info('[v0.16.5] state.view repaired:', state.view, '→ overview');
+      state.view = 'overview'; changed = true;
+    }
+    // objects
+    ['marks','notes','deleted','scoreOverrides'].forEach(k => {
+      if (!state[k] || typeof state[k] !== 'object' || Array.isArray(state[k])) {
+        console.info('[v0.16.5] state.' + k + ' repaired:', state[k], '→ {}');
+        state[k] = {}; changed = true;
+      }
+    });
+    if (changed) {
+      saveState();
+      console.info('[v0.16.5] state-repair persisted');
+    }
+  }
+  repairState();
 
   // ------------------------------------------------------------------
   // Init
