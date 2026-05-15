@@ -3581,7 +3581,15 @@
     if (!pf.low && !pf.mid && !pf.high && !pf.xhigh) {
       return `<h2>Kein Preis-Bucket aktiv</h2><p>Mindestens einen Preis-Filter im Header aktivieren.</p>`;
     }
-    return `<h2>Keine Listings im Filter</h2><p>Preis-Bucket erweitern oder Filter aendern.</p>`;
+    const order = ['low', 'mid', 'high', 'xhigh'];
+    const labels = { mid: 'bis 700 €', high: 'bis 900 €', xhigh: 'über 900 €' };
+    let highest = -1;
+    for (let i = 0; i < order.length; i++) if (pf[order[i]]) highest = i;
+    const next = highest >= 0 && highest < order.length - 1 ? order[highest + 1] : null;
+    if (next) {
+      return `<h2>Keine Listings im ausgewählten Preisbereich gefunden.</h2><p><button class="empty-expand-btn" type="button" onclick="expandNextPriceBucket()" title="${labels[next]} hinzunehmen">Filter erweitern?</button></p>`;
+    }
+    return `<h2>Keine Listings im ausgewählten Preisbereich gefunden.</h2><p>Alle Preisbereiche sind bereits aktiv.</p>`;
   }
 
   function renderOverview() {
@@ -4221,6 +4229,19 @@
     renderFooter();
     renderHeaderCounters();
   }
+
+  // v0.16.2 — Marc 2026-05-15: Empty-State-Button für „Filter erweitern".
+  // Schaltet den nächsthöheren Preis-Bucket über der aktuell höchsten aktiven Stufe scharf.
+  function expandNextPriceBucket() {
+    if (!state.priceFilter) state.priceFilter = { low: true, mid: false, high: false, xhigh: false };
+    const order = ['low', 'mid', 'high', 'xhigh'];
+    let highest = -1;
+    for (let i = 0; i < order.length; i++) if (state.priceFilter[order[i]]) highest = i;
+    if (highest >= 0 && highest < order.length - 1) {
+      togglePrice(order[highest + 1]);
+    }
+  }
+  window.expandNextPriceBucket = expandNextPriceBucket;
 
   function renderPriceToggle() {
     const pf = state.priceFilter || { low: true, mid: false, high: false, xhigh: false };
