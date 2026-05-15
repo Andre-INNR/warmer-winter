@@ -9,7 +9,7 @@
 <!-- v0.14.0 Fix 9: Lora Serif — warm, bookish, harmoniert mit Korall-Palmen-Icon -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <style>
   /* ============================================================
      v0.8 — Calm-Cream + Airbnb-Coral + Headspace-Pfirsich
@@ -1471,22 +1471,23 @@
 <header>
   <div class="header-brand">
     <button id="logo-home" class="logo-button" type="button" aria-label="Zurück zur Übersicht mit Default-Filtern">
-      <svg class="logo-svg" viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg class="logo-svg" viewBox="0 0 240 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- v0.16.2 — Logo neu ausgerichtet: Icon vertikal um +6 nach unten, Horizont auf Text-Baseline.
+             Wordmark zweigeteilt: „Warmer" kursiv-regular, „Winter" bold-upright. Logo-feel statt Body. -->
         <!-- Sun half-circle at horizon -->
-        <clipPath id="sun-clip"><rect x="0" y="0" width="52" height="28"/></clipPath>
-        <circle cx="26" cy="28" r="22" fill="#FF5A5F" clip-path="url(#sun-clip)"/>
-        <!-- Horizon line -->
-        <line x1="4" y1="28" x2="48" y2="28" stroke="#E04E54" stroke-width="1.5" stroke-linecap="round"/>
+        <clipPath id="sun-clip"><rect x="0" y="6" width="52" height="28"/></clipPath>
+        <circle cx="26" cy="34" r="22" fill="#FF5A5F" clip-path="url(#sun-clip)"/>
+        <!-- Horizon line — aligned with text baseline -->
+        <line x1="4" y1="34" x2="48" y2="34" stroke="#E04E54" stroke-width="1.5" stroke-linecap="round"/>
         <!-- Palm trunk -->
-        <path d="M36 44 Q38 34 34 28" stroke="#FFD9B8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <path d="M36 50 Q38 40 34 34" stroke="#FFD9B8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
         <!-- Palm fronds -->
-        <path d="M34 28 Q28 22 22 24" stroke="#FFD9B8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-        <path d="M34 28 Q30 20 34 16" stroke="#FFD9B8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-        <path d="M34 28 Q40 20 44 22" stroke="#FFD9B8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-        <path d="M34 28 Q38 24 46 26" stroke="#FFD9B8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-        <!-- Wordmark -->
-        <!-- v0.14.0 Fix 8: Text-Baseline auf Linie mit Icon-Mitte (y=28 = Horizont-Linie) -->
-        <text x="58" y="34" dominant-baseline="middle" font-family="'Lora', Georgia, 'Times New Roman', serif" font-size="21" font-weight="700" letter-spacing="0.01em" fill="#5A3E28">Warmer Winter</text>
+        <path d="M34 34 Q28 28 22 30" stroke="#FFD9B8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <path d="M34 34 Q30 26 34 22" stroke="#FFD9B8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <path d="M34 34 Q40 26 44 28" stroke="#FFD9B8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <path d="M34 34 Q38 30 46 32" stroke="#FFD9B8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <!-- Wordmark — italic „Warmer" + bold „Winter" für Logo-Charakter -->
+        <text x="58" y="34" dominant-baseline="middle" font-family="'Lora', Georgia, 'Times New Roman', serif" font-size="22" fill="#5A3E28"><tspan font-style="italic" font-weight="400" letter-spacing="0.015em">Warmer</tspan><tspan font-weight="700" letter-spacing="0.04em" dx="6">Winter</tspan></text>
       </svg>
     </button>
     <div class="meta">Wohnungs-Suche fuer die warme Saison · v0.16.1-2026-05-14 · Stand 2026-05-14</div>
