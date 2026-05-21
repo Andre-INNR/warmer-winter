@@ -1,1 +1,6 @@
-{"votes":{},"updatedAt":"2026-05-14T10:00:00Z","schema":"v1"}
+{
+  "schema": "v2",
+  "updatedAt": "2026-05-21T15:05:00Z",
+  "users": {},
+  "_doc": "Per-user state. Each user writes only their own section. Schema: users.<name> = { votes:{listingId:'like|dislike|question'}, deletes:{listingId:'iso-ts'}, notes:{listingId:'text'}, updatedAt:'iso-ts' }"
+}
