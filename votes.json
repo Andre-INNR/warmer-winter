@@ -1,6 +1,6 @@
 {
   "schema": "v2",
-  "updatedAt": "2026-05-25T13:56:08.704Z",
+  "updatedAt": "2026-05-25T15:22:11.692Z",
   "users": {
     "Marc": {
       "votes": {
@@ -15,13 +15,15 @@
         "spainhouses-15444794": "like",
         "fotocasa-189722845": "dislike",
         "fotocasa-189728692": "dislike",
-        "pisos-57526186766_105400": "like"
+        "pisos-57526186766_105400": "like",
+        "pisos-64200602635_109800": "like",
+        "fotocasa-189310261": "dislike"
       },
       "deletes": {},
       "notes": {
         "pisos-63394935565": ""
       },
-      "updatedAt": "2026-05-25T13:56:08.704Z"
+      "updatedAt": "2026-05-25T15:22:11.692Z"
     }
   },
   "_doc": "Per-user state. Each user writes only their own section. Schema: users.<name> = { votes:{listingId:'like|dislike|question'}, deletes:{listingId:'iso-ts'}, notes:{listingId:'text'}, updatedAt:'iso-ts' }"
