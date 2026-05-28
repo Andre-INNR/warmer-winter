@@ -1,6 +1,6 @@
 {
   "schema": "v2",
-  "updatedAt": "2026-05-28T14:51:47.093Z",
+  "updatedAt": "2026-05-28T16:37:23.800Z",
   "users": {
     "Marc": {
       "votes": {
@@ -20,14 +20,25 @@
         "fotocasa-189310261": "dislike",
         "fotocasa-189719922": "dislike",
         "enalquiler-6999206": "like",
-        "idealista-86102811": "dislike"
+        "idealista-86102811": "dislike",
+        "fotocasa-189671389": "like"
       },
       "deletes": {},
       "notes": {
         "pisos-63394935565": "",
         "spotahome-1587291": "Leider derzeit kein Winterangebot."
       },
-      "updatedAt": "2026-05-28T14:51:47.093Z"
+      "questions": {
+        "fotocasa-189671389": [
+          {
+            "q": "Dürften wir Nika mitbringen, obwohl Haustiere verboten sind?",
+            "a": null,
+            "q_ts": "2026-05-28T16:37:16.623Z",
+            "a_ts": null
+          }
+        ]
+      },
+      "updatedAt": "2026-05-28T16:37:23.800Z"
     }
   },
   "_doc": "Per-user state. Each user writes only their own section. Schema: users.<name> = { votes:{listingId:'like|dislike|question'}, deletes:{listingId:'iso-ts'}, notes:{listingId:'text'}, updatedAt:'iso-ts' }"
