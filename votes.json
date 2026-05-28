@@ -1,6 +1,6 @@
 {
   "schema": "v2",
-  "updatedAt": "2026-05-28T09:41:30.576Z",
+  "updatedAt": "2026-05-28T10:13:41.474Z",
   "users": {
     "Marc": {
       "votes": {
@@ -19,14 +19,14 @@
         "pisos-64200602635_109800": "like",
         "fotocasa-189310261": "dislike",
         "fotocasa-189719922": "dislike",
-        "idealista-106194682": "like"
+        "enalquiler-6999206": "like"
       },
       "deletes": {},
       "notes": {
         "pisos-63394935565": "",
         "spotahome-1587291": "Leider derzeit kein Winterangebot."
       },
-      "updatedAt": "2026-05-28T09:41:30.576Z"
+      "updatedAt": "2026-05-28T10:13:41.474Z"
     }
   },
   "_doc": "Per-user state. Each user writes only their own section. Schema: users.<name> = { votes:{listingId:'like|dislike|question'}, deletes:{listingId:'iso-ts'}, notes:{listingId:'text'}, updatedAt:'iso-ts' }"
