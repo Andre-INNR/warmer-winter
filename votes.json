@@ -1,6 +1,6 @@
 {
   "schema": "v2",
-  "updatedAt": "2026-05-29T14:15:56.975Z",
+  "updatedAt": "2026-05-29T14:17:31.986Z",
   "users": {
     "Marc": {
       "votes": {
@@ -28,7 +28,9 @@
         "fotocasa-178902538": "like",
         "fotocasa-188718074": "like",
         "fotocasa-185040545": "like",
-        "fotocasa-179236841": "like"
+        "fotocasa-179236841": "like",
+        "fotocasa-179333031": "like",
+        "fotocasa-188740620": "like"
       },
       "deletes": {
         "idealista-111564836": true
@@ -55,7 +57,7 @@
           }
         ]
       },
-      "updatedAt": "2026-05-29T14:15:56.975Z"
+      "updatedAt": "2026-05-29T14:17:31.986Z"
     }
   },
   "_doc": "Per-user state. Each user writes only their own section. Schema: users.<name> = { votes:{listingId:'like|dislike|question'}, deletes:{listingId:'iso-ts'}, notes:{listingId:'text'}, updatedAt:'iso-ts' }"
