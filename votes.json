@@ -1,6 +1,6 @@
 {
   "schema": "v2",
-  "updatedAt": "2026-05-28T16:37:23.800Z",
+  "updatedAt": "2026-05-29T14:11:09.961Z",
   "users": {
     "Marc": {
       "votes": {
@@ -21,9 +21,13 @@
         "fotocasa-189719922": "dislike",
         "enalquiler-6999206": "like",
         "idealista-86102811": "dislike",
-        "fotocasa-189671389": "like"
+        "fotocasa-189671389": "like",
+        "fotocasa-189758957": "like",
+        "fotocasa-189054006": "like"
       },
-      "deletes": {},
+      "deletes": {
+        "idealista-111564836": true
+      },
       "notes": {
         "pisos-63394935565": "",
         "spotahome-1587291": "Leider derzeit kein Winterangebot."
@@ -36,9 +40,17 @@
             "q_ts": "2026-05-28T16:37:16.623Z",
             "a_ts": null
           }
+        ],
+        "fotocasa-189758957": [
+          {
+            "q": "Nika erlaubt?",
+            "a": null,
+            "q_ts": "2026-05-28T16:37:57.757Z",
+            "a_ts": null
+          }
         ]
       },
-      "updatedAt": "2026-05-28T16:37:23.800Z"
+      "updatedAt": "2026-05-29T14:11:09.961Z"
     }
   },
   "_doc": "Per-user state. Each user writes only their own section. Schema: users.<name> = { votes:{listingId:'like|dislike|question'}, deletes:{listingId:'iso-ts'}, notes:{listingId:'text'}, updatedAt:'iso-ts' }"
